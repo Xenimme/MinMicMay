@@ -1,0 +1,24 @@
+a = wheel_base = 70
+b = steering_angle = 30
+c = engine_power = 900
+d = acceleration = transform.x * c
+e = steering_direction = p * (b * 0.0174533)
+f = friction = -55
+g = drag = -0.06
+h = braking = -450
+i = max_speed_reverse = 250
+j = slip_speed = 400
+k = traction_fast = 2.5
+l = traction_slow = 10
+m = velocity (also velocity.length) = d * v
+n = friction_force = m * f * v
+o = drag_force m * velocity.length * g * v
+p = turn = left or right
+q = rear_wheel = w - transform.x * a / 2.0
+r = front_wheel = w + transform.x * a / 2.0
+s = traction = l or if velocity.length > j, = k 
+t = new_heading = (r - q).normalised
+u = drift = t(m.normalised)
+v = delta (time elapsed during one frame. internal variable)
+w = position
+x = rotation = t.angle
