@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://b2j8il6kmwbua"]
+[gd_scene load_steps=24 format=3 uid="uid://b2j8il6kmwbua"]
 
 [ext_resource type="Texture2D" uid="uid://dt65ubuq1u7q8" path="res://NPC_cars (16 x 16).png" id="1_57on1"]
 [ext_resource type="Texture2D" uid="uid://d18umlli324xf" path="res://Player_blue (16 x 16).png" id="1_t2m5y"]
 [ext_resource type="Script" path="res://Player1.gd" id="2_25r1c"]
 [ext_resource type="Texture2D" uid="uid://dr3ootg4tfvll" path="res://track 2.png" id="2_wagpl"]
 [ext_resource type="Texture2D" uid="uid://nbld4e8icf8u" path="res://Track.png" id="5_11505"]
+[ext_resource type="Script" path="res://PathFollow2D33.gd" id="6_5ev28"]
 [ext_resource type="Script" path="res://NPC_Car_1.gd" id="6_6nv0o"]
 [ext_resource type="Script" path="res://new_script.gd" id="6_enu03"]
 [ext_resource type="Texture2D" uid="uid://pa2d0w1wc8l1" path="res://Police (16 x 16).png" id="6_k0l6l"]
@@ -199,15 +200,16 @@ avoidance_enabled = true
 max_speed = 300.0
 debug_enabled = true
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="Path" type="Path2D" parent="."]
 curve = SubResource("Curve2D_w6bq6")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path"]
 position = Vector2(-163, -892)
 rotation = -1.57593
 lookahead = 0.001
+script = ExtResource("6_5ev28")
 
-[node name="NPC_Car_2" type="CharacterBody2D" parent="Path2D/PathFollow2D"]
+[node name="NPC_Car_2" type="CharacterBody2D" parent="Path/PathFollow2D"]
 visible = false
 position = Vector2(-473.983, -4.43494)
 rotation = -1.5708
@@ -217,20 +219,21 @@ safe_margin = 20.0
 script = ExtResource("6_6nv0o")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/NPC_Car_2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path/PathFollow2D/NPC_Car_2"]
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_e3vr6")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/PathFollow2D/NPC_Car_2/CollisionShape2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path/PathFollow2D/NPC_Car_2/CollisionShape2D"]
 texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_e4bmv")
 
-[node name="RayCast2D" type="RayCast2D" parent="Path2D/PathFollow2D/NPC_Car_2"]
+[node name="RayCast2D" type="RayCast2D" parent="Path/PathFollow2D/NPC_Car_2"]
 
-[node name="NPC_Car_1" type="CharacterBody2D" parent="Path2D"]
-position = Vector2(-165, -418.001)
-rotation = -1.52716
+[node name="NPC_Car_1" type="CharacterBody2D" parent="Path/PathFollow2D"]
+position = Vector2(-473.982, -4.43491)
+rotation = -1.5708
+scale = Vector2(1, 1)
 disable_mode = 2
 motion_mode = 1
 platform_on_leave = 2
@@ -238,10 +241,11 @@ safe_margin = 20.0
 script = ExtResource("6_enu03")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/NPC_Car_1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path/PathFollow2D/NPC_Car_1"]
+rotation = 1.5708
 shape = SubResource("RectangleShape2D_e3vr6")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/NPC_Car_1/CollisionShape2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path/PathFollow2D/NPC_Car_1/CollisionShape2D"]
 texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_e4bmv")

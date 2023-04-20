@@ -33,8 +33,8 @@ func _physics_process(delta):
 
 func set_interest():
 	# Set interest in each slot based on world direction
-	if owner and owner.has_method("get_progress()"):
-		var path_direction = owner.get_progress()
+	if owner and owner.has_method("get_path_direction"):
+		var path_direction = owner.get_path_direction(position)
 		for i in num_rays:
 			var d = ray_directions[i].rotated(rotation).dot(path_direction)
 			interest[i] = max(0, d)
@@ -51,7 +51,7 @@ func set_default_interest():
 func set_danger():
 	# Cast rays to find danger directions
 	var params = PhysicsRayQueryParameters2D.new()
-	
+	params.from = position
 	var space_state = get_world_2d().direct_space_state
 	for i in num_rays:
 		var result = space_state.intersect_ray(params)
@@ -69,3 +69,8 @@ func choose_direction():
 	for i in num_rays:
 		chosen_dir += ray_directions[i] * interest[i]
 	chosen_dir = chosen_dir.normalized()
+
+func get_path_direction(pos):
+	var offset = Path2D.curve.get_closest_offset(pos)
+	PathFollow2D.h_offset = offset
+	return PathFollow2D.transform.x
