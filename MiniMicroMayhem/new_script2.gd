@@ -1,16 +1,26 @@
 extends CharacterBody2D
 
-@export var max_speed = 300
+@export var max_speed = 0.01
 @export var steer_force = 0.1
 @export var look_ahead = 100
 @export var num_rays = 8
-
+@export var friction = -55
+@export var drag = -0.06
+@export var braking = -300
+@export var max_speed_reverse = 250
+@export var slip_speed = 300
+@export var traction_vfast = -2.5
+@export var traction_fast = 2.5
+@export var traction_slow = 30
+@export var drift = 0
 # context array
 var ray_directions = []
 var interest = []
 var danger = []
 var chosen_dir = Vector2.ZERO
 var acceleration = Vector2.ZERO
+var _follow :PathFollow2D
+
 func _ready():
 	interest.resize(num_rays)
 	danger.resize(num_rays)
@@ -26,8 +36,15 @@ func _physics_process(delta):
 	var desired_velocity = chosen_dir.rotated(rotation) * max_speed
 	velocity = velocity.lerp(desired_velocity, steer_force)
 	rotation = velocity.angle()
-	move_and_collide(velocity / delta)
+	apply_friction(delta)
+	move_and_collide(velocity * delta)
 
+func apply_friction(delta):
+	if acceleration == Vector2.ZERO and velocity.length() < 50:
+		velocity = Vector2.ZERO
+	var friction_force = velocity * friction * delta
+	var drag_force = velocity * velocity.length() * drag * delta
+	acceleration += drag_force + friction_force
 
 func set_interest():
 	# Set interest in each slot based on world direction

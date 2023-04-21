@@ -1,14 +1,13 @@
-[gd_scene load_steps=24 format=3 uid="uid://b2j8il6kmwbua"]
+[gd_scene load_steps=23 format=3 uid="uid://b2j8il6kmwbua"]
 
 [ext_resource type="Texture2D" uid="uid://dt65ubuq1u7q8" path="res://NPC_cars (16 x 16).png" id="1_57on1"]
 [ext_resource type="Texture2D" uid="uid://d18umlli324xf" path="res://Player_blue (16 x 16).png" id="1_t2m5y"]
 [ext_resource type="Script" path="res://Player1.gd" id="2_25r1c"]
 [ext_resource type="Texture2D" uid="uid://dr3ootg4tfvll" path="res://track 2.png" id="2_wagpl"]
 [ext_resource type="Texture2D" uid="uid://nbld4e8icf8u" path="res://Track.png" id="5_11505"]
-[ext_resource type="Script" path="res://PathFollow2D33.gd" id="6_5ev28"]
-[ext_resource type="Script" path="res://NPC_Car_1.gd" id="6_6nv0o"]
-[ext_resource type="Script" path="res://new_script.gd" id="6_enu03"]
+[ext_resource type="Script" path="res://NPC_Route.gd" id="6_cuuiy"]
 [ext_resource type="Texture2D" uid="uid://pa2d0w1wc8l1" path="res://Police (16 x 16).png" id="6_k0l6l"]
+[ext_resource type="Script" path="res://new_script2.gd" id="7_268cm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_flq8p"]
 texture_region_size = Vector2i(20, 20)
@@ -118,9 +117,9 @@ animations = [{
 
 [sub_resource type="Curve2D" id="Curve2D_w6bq6"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -163, -892, 0, 0, 0, 0, -166, -1476, -168.179, 16.8179, 168.179, -16.8179, -18, -1762, 0, 0, 0, 0, 172, -1571, 0, 0, 0, 0, 172, -818, 6.72717, -289.268, -6.72717, 289.268, 183, -245, 92.4986, -3.36359, -92.4986, 3.36359, 2, 184, 1.68179, 218.633, -1.68179, -218.633, -166, -66, 0, 0, 0, 0, -163, -892)
+"points": PackedVector2Array(0, 0, 0, 0, -210, -73, 0, 0, 0, 0, -210, -788, 0, 0, 0, 0, -212, -1578, -153.043, 1.68179, 153.043, -1.68179, -71, -1760, 0, 0, 0, 0, 92, -1576, 0, 0, 0, 0, 92, -69, 193.406, -1.68179, -193.406, 1.68179, -71, 200, 0, 0, 0, 0, -210, -73)
 }
-point_count = 9
+point_count = 8
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3vr6"]
 size = Vector2(24, 16)
@@ -201,44 +200,23 @@ max_speed = 300.0
 debug_enabled = true
 
 [node name="Path" type="Path2D" parent="."]
+position = Vector2(70, -2)
 curve = SubResource("Curve2D_w6bq6")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path"]
-position = Vector2(-163, -892)
-rotation = -1.57593
-lookahead = 0.001
-script = ExtResource("6_5ev28")
-
-[node name="NPC_Car_2" type="CharacterBody2D" parent="Path/PathFollow2D"]
-visible = false
-position = Vector2(-473.983, -4.43494)
+position = Vector2(-210, -73)
 rotation = -1.5708
-disable_mode = 2
-motion_mode = 1
-safe_margin = 20.0
-script = ExtResource("6_6nv0o")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path/PathFollow2D/NPC_Car_2"]
-rotation = 1.5708
-shape = SubResource("RectangleShape2D_e3vr6")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path/PathFollow2D/NPC_Car_2/CollisionShape2D"]
-texture_filter = 1
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_e4bmv")
-
-[node name="RayCast2D" type="RayCast2D" parent="Path/PathFollow2D/NPC_Car_2"]
+lookahead = 83.028
+script = ExtResource("6_cuuiy")
 
 [node name="NPC_Car_1" type="CharacterBody2D" parent="Path/PathFollow2D"]
-position = Vector2(-473.982, -4.43491)
+position = Vector2(151, 0.652008)
 rotation = -1.5708
-scale = Vector2(1, 1)
 disable_mode = 2
 motion_mode = 1
 platform_on_leave = 2
 safe_margin = 20.0
-script = ExtResource("6_enu03")
+script = ExtResource("7_268cm")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path/PathFollow2D/NPC_Car_1"]
@@ -246,6 +224,22 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_e3vr6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path/PathFollow2D/NPC_Car_1/CollisionShape2D"]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_e4bmv")
+
+[node name="NPC_Car_2" type="CharacterBody2D" parent="Path"]
+position = Vector2(-210, -97.0022)
+rotation = 3.14159
+disable_mode = 2
+safe_margin = 20.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path/NPC_Car_2"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_e3vr6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path/NPC_Car_2/CollisionShape2D"]
 texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_e4bmv")
