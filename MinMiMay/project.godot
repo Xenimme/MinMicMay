@@ -41,3 +41,13 @@ brake={
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":4,"axis_value":1.0,"script":null)
 ]
 }
+"Zoom Out"={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":16,"position":Vector2(140, 12),"global_position":Vector2(144, 55),"factor":1.0,"button_index":5,"pressed":true,"double_click":false,"script":null)
+]
+}
+"Zoom In"={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":8,"position":Vector2(98, 7),"global_position":Vector2(102, 50),"factor":1.0,"button_index":4,"pressed":true,"double_click":false,"script":null)
+]
+}

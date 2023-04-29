@@ -1,6 +1,6 @@
 extends AnimatedSprite2D
 
-var sprite = ["0", "2"]
+var sprite = ["0", "1", "2", "3"]
 @onready var colour = sprite[randi() % sprite.size()]
 # Called when the node enters the scene tree for the first time.
 func _ready():

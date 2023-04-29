@@ -10,8 +10,8 @@ var drag = -0.06
 var braking = (engine_power * -1)
 var max_speed_reverse = 250
 var slip_speed = 300
-var traction_fast = 2.5
-var traction_slow = 30
+var traction_fast = randf_range(2.3, 3.0)
+var traction_slow = randf_range(28, 32)
 var drift = 0
 
 
@@ -63,4 +63,4 @@ func calculate_steering(delta):
 	rotation = new_heading.angle()
 	Velocity = velocity.length() / 10
 	
-	print(velocity.length())
+#	print(velocity.length())

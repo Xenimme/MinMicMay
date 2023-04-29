@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://btarsx1mm7817"]
+[gd_scene load_steps=13 format=3 uid="uid://btarsx1mm7817"]
 
 [ext_resource type="Script" path="res://NPC_car_2.gd" id="1_bx7sk"]
 [ext_resource type="Script" path="res://RayGeneral.gd" id="2_m45c3"]
 [ext_resource type="Texture2D" uid="uid://dt65ubuq1u7q8" path="res://NPC_cars (16 x 16).png" id="3_viu8s"]
 [ext_resource type="Script" path="res://NPC_Sprite.gd" id="4_77bwf"]
+[ext_resource type="Texture2D" uid="uid://be6f4onsvloid" path="res://Player_green (16 x 16).png" id="4_du0ij"]
+[ext_resource type="Texture2D" uid="uid://b8tey87jimyy6" path="res://Player_red (16 x 16).png" id="5_sw0uq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifiu7"]
 size = Vector2(24, 16)
@@ -15,6 +17,14 @@ region = Rect2(16, 32, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_8v2m3"]
 atlas = ExtResource("3_viu8s")
 region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x01mj"]
+atlas = ExtResource("4_du0ij")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chjto"]
+atlas = ExtResource("5_sw0uq")
+region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pbpgm"]
 animations = [{
@@ -31,7 +41,23 @@ animations = [{
 "texture": SubResource("AtlasTexture_8v2m3")
 }],
 "loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x01mj")
+}],
+"loop": true,
 "name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chjto")
+}],
+"loop": true,
+"name": &"3",
 "speed": 5.0
 }]
 
@@ -127,5 +153,5 @@ script = ExtResource("2_m45c3")
 texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_pbpgm")
-animation = &"0"
+animation = &"3"
 script = ExtResource("4_77bwf")

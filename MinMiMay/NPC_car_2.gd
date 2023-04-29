@@ -1,15 +1,15 @@
 extends CharacterBody2D
 var Velocity = 0
-var wheel_base = 70
+var wheel_base = randf_range(68, 72)
 var acceleration = Vector2.ZERO
-var steering_angle = 35
+var steering_angle = randf_range (35, 40)
 var interest = 0
 var FOREDET
 var friction = -55
 var drag = -0.06
 var min_speed = 0
-var engine_power = 500
-var brake = (engine_power * -0.2)
+var engine_power = randf_range(480, 500)
+var brake = (engine_power * randf_range(-0.2, -1))
 var dir
 var RayLeft = []
 var RayRight = []
@@ -38,9 +38,10 @@ func _physics_process(delta):
 	FOREDET = $RayCastFore2.result
 	apply_friction(delta)
 	steerage(delta)
+	
 func set_speed():
 	if FOREDET == 0:
-		acceleration = transform.x * engine_power
+		acceleration = transform.x * (engine_power * randf_range(0.5, 1.2))
 	else:
 		acceleration = transform.x * brake
 func apply_friction(delta):

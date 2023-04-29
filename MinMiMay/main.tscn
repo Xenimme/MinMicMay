@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxvnnhp27cciq"]
+[gd_scene load_steps=13 format=3 uid="uid://bxvnnhp27cciq"]
 
 [ext_resource type="Texture2D" uid="uid://dt65ubuq1u7q8" path="res://NPC_cars (16 x 16).png" id="1_57on1"]
 [ext_resource type="PackedScene" uid="uid://b8h6emjt2685d" path="res://VertStraight.tscn" id="4_ghis7"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://isqtcdvv7mof" path="res://S-E.tscn" id="6_nvu3d"]
 [ext_resource type="PackedScene" uid="uid://bsyw2pj6ywjl0" path="res://W-N.tscn" id="7_n7sx3"]
 [ext_resource type="PackedScene" uid="uid://cwt1jjcu1hiru" path="res://W-S.tscn" id="8_n50fl"]
+[ext_resource type="Script" path="res://Cameralamera.gd" id="9_e1igk"]
 [ext_resource type="PackedScene" uid="uid://btarsx1mm7817" path="res://NPC car.tscn" id="9_wr6xi"]
 [ext_resource type="PackedScene" uid="uid://d0o8blkrvvla6" path="res://HorizStraight.tscn" id="9_wy13o"]
 
@@ -24,10 +25,10 @@ sources/0 = SubResource("TileSetScenesCollectionSource_xe5ab")
 [node name="Main" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-700, -1300)
-rotation = -1.5708
+position = Vector2(-664, -1280)
 scale = Vector2(20, 20)
-zoom = Vector2(0.199, 0.199)
+zoom = Vector2(0.2, 0.2)
+script = ExtResource("9_e1igk")
 
 [node name="TileMap2" type="TileMap" parent="."]
 scale = Vector2(4, 4)
@@ -43,9 +44,6 @@ offset_right = 364.0
 offset_bottom = 241.0
 texture = ExtResource("1_57on1")
 stretch_mode = 1
-
-[node name="Player Node" parent="." instance=ExtResource("5_6rigd")]
-position = Vector2(-8, -33)
 
 [node name="NPC_Car_2" parent="." instance=ExtResource("9_wr6xi")]
 position = Vector2(-198, -102)
@@ -78,3 +76,6 @@ rotation = -1.5708
 [node name="NPC_Car_9" parent="." instance=ExtResource("9_wr6xi")]
 position = Vector2(-130, -289)
 rotation = -1.5708
+
+[node name="Player Node" parent="." instance=ExtResource("5_6rigd")]
+position = Vector2(-8, -33)
