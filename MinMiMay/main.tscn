@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://bxvnnhp27cciq"]
+
+[ext_resource type="Texture2D" uid="uid://dt65ubuq1u7q8" path="res://NPC_cars (16 x 16).png" id="1_57on1"]
+[ext_resource type="PackedScene" uid="uid://b8h6emjt2685d" path="res://VertStraight.tscn" id="4_ghis7"]
+[ext_resource type="PackedScene" uid="uid://c3entybxqsut1" path="res://Player Car.tscn" id="5_6rigd"]
+[ext_resource type="PackedScene" uid="uid://dni6cpk6h6esu" path="res://N-W.tscn" id="5_hp4iu"]
+[ext_resource type="PackedScene" uid="uid://isqtcdvv7mof" path="res://S-E.tscn" id="6_nvu3d"]
+[ext_resource type="PackedScene" uid="uid://bsyw2pj6ywjl0" path="res://W-N.tscn" id="7_n7sx3"]
+[ext_resource type="PackedScene" uid="uid://cwt1jjcu1hiru" path="res://W-S.tscn" id="8_n50fl"]
+[ext_resource type="PackedScene" uid="uid://btarsx1mm7817" path="res://NPC car.tscn" id="9_wr6xi"]
+[ext_resource type="PackedScene" uid="uid://d0o8blkrvvla6" path="res://HorizStraight.tscn" id="9_wy13o"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_xe5ab"]
+scenes/1/scene = ExtResource("4_ghis7")
+scenes/2/scene = ExtResource("9_wy13o")
+scenes/10/scene = ExtResource("5_hp4iu")
+scenes/11/scene = ExtResource("6_nvu3d")
+scenes/12/scene = ExtResource("7_n7sx3")
+scenes/13/scene = ExtResource("8_n50fl")
+
+[sub_resource type="TileSet" id="TileSet_jtwy7"]
+sources/0 = SubResource("TileSetScenesCollectionSource_xe5ab")
+
+[node name="Main" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-700, -1300)
+rotation = -1.5708
+scale = Vector2(20, 20)
+zoom = Vector2(0.199, 0.199)
+
+[node name="TileMap2" type="TileMap" parent="."]
+scale = Vector2(4, 4)
+tile_set = SubResource("TileSet_jtwy7")
+format = 2
+layer_0/tile_data = PackedInt32Array(-2752535, 0, 131072, -2752530, 0, 131072, -2752525, 0, 131072, -2752520, 0, 131072, -2752515, 0, 131072, -2424850, 0, 131072, -2424845, 0, 131072, -2424840, 0, 131072, -2097170, 0, 131072, -1769485, 0, 65536, -1441795, 0, 65536, -1114115, 0, 65536, -786435, 0, 65536, -458755, 0, 65536, -131075, 0, 65536, -196606, 0, 65536, -524286, 0, 65536, -851966, 0, 65536, -1179646, 0, 65536, -1507326, 0, 65536, -1835006, 0, 65536, -2162686, 0, 65536, -2490366, 0, 65536, -2424860, 0, 65536, -2097180, 0, 65536, -2818046, 0, 655360, -2424835, 0, 655360, -2097165, 0, 655360, -2097175, 0, 720896, 196605, 0, 720896, 131074, 0, 786432, -2752540, 0, 851968, -2424855, 0, 851968, -2097160, 0, 851968, -2097155, 0, 786432, -1769480, 0, 720896, -1769475, 0, 655360, -1441805, 0, 720896, -1441800, 0, 655360, -1114120, 0, 65536, -786440, 0, 65536, -458760, 0, 65536, -131080, 0, 65536, 196600, 0, 786432, 196595, 0, 720896, -131085, 0, 65536, -458765, 0, 65536, -786445, 0, 65536, -1114125, 0, 655360, -1114130, 0, 720896, -1441810, 0, 65536, -1769490, 0, 655360, -1769495, 0, 851968, -1441815, 0, 65536, -1114135, 0, 65536, -786455, 0, 720896, -786450, 0, 655360, -458770, 0, 65536, -131090, 0, 65536, 196590, 0, 786432, 196585, 0, 720896, -131095, 0, 65536, -458775, 0, 655360, -458780, 0, 720896, -786460, 0, 65536, -1114140, 0, 65536, -1441820, 0, 65536, -1769500, 0, 65536)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+offset_left = -361.0
+offset_top = -239.0
+offset_right = 364.0
+offset_bottom = 241.0
+texture = ExtResource("1_57on1")
+stretch_mode = 1
+
+[node name="Player Node" parent="." instance=ExtResource("5_6rigd")]
+position = Vector2(-8, -33)
+
+[node name="NPC_Car_2" parent="." instance=ExtResource("9_wr6xi")]
+position = Vector2(-198, -102)
+rotation = -1.5708
+
+[node name="NPC_Car_3" parent="." instance=ExtResource("9_wr6xi")]
+position = Vector2(-197, -238)
+rotation = -1.5708
+
+[node name="NPC_Car_4" parent="." instance=ExtResource("9_wr6xi")]
+position = Vector2(-131, -171)
+rotation = -1.5708
+
+[node name="NPC_Car_5" parent="." instance=ExtResource("9_wr6xi")]
+position = Vector2(-129, -13)
+rotation = -1.5708
+
+[node name="NPC_Car_6" parent="." instance=ExtResource("9_wr6xi")]
+position = Vector2(-199, -378)
+rotation = -1.5708
+
+[node name="NPC_Car_7" parent="." instance=ExtResource("9_wr6xi")]
+position = Vector2(-198, -514)
+rotation = -1.5708
+
+[node name="NPC_Car_8" parent="." instance=ExtResource("9_wr6xi")]
+position = Vector2(-132, -447)
+rotation = -1.5708
+
+[node name="NPC_Car_9" parent="." instance=ExtResource("9_wr6xi")]
+position = Vector2(-130, -289)
+rotation = -1.5708

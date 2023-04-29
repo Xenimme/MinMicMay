@@ -1,0 +1,131 @@
+[gd_scene load_steps=9 format=3 uid="uid://btarsx1mm7817"]
+
+[ext_resource type="Script" path="res://NPC_car_2.gd" id="1_bx7sk"]
+[ext_resource type="Script" path="res://RayGeneral.gd" id="2_m45c3"]
+[ext_resource type="Texture2D" uid="uid://dt65ubuq1u7q8" path="res://NPC_cars (16 x 16).png" id="3_viu8s"]
+[ext_resource type="Script" path="res://NPC_Sprite.gd" id="4_77bwf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifiu7"]
+size = Vector2(24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qet6y"]
+atlas = ExtResource("3_viu8s")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v2m3"]
+atlas = ExtResource("3_viu8s")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pbpgm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qet6y")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8v2m3")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}]
+
+[node name="NPC_Car_2" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_bx7sk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.84774e-06, -2.70206e-07)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_ifiu7")
+
+[node name="RayCastFore" type="RayCast2D" parent="."]
+rotation = -3.14159
+target_position = Vector2(-60, 0)
+script = ExtResource("2_m45c3")
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+rotation = 1.9443
+target_position = Vector2(0, -45)
+script = ExtResource("2_m45c3")
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+rotation = -1.94429
+target_position = Vector2(0, 45)
+script = ExtResource("2_m45c3")
+
+[node name="RayCastRearLeft" type="RayCast2D" parent="."]
+rotation = -1.34564
+target_position = Vector2(30, 30)
+script = ExtResource("2_m45c3")
+
+[node name="RayCastRearRight" type="RayCast2D" parent="."]
+rotation = 1.34565
+target_position = Vector2(30, -30)
+script = ExtResource("2_m45c3")
+
+[node name="RayCastForeLeft" type="RayCast2D" parent="."]
+rotation = -2.54294
+target_position = Vector2(-35, 35)
+script = ExtResource("2_m45c3")
+
+[node name="RayCastForeRight" type="RayCast2D" parent="."]
+rotation = 2.54295
+target_position = Vector2(-35, -35)
+script = ExtResource("2_m45c3")
+
+[node name="RayCastFore2" type="RayCast2D" parent="."]
+rotation = -3.14159
+scale = Vector2(7, 7)
+target_position = Vector2(-60, 0)
+script = ExtResource("2_m45c3")
+
+[node name="RayCastRight2" type="RayCast2D" parent="."]
+rotation = 1.9443
+scale = Vector2(6, 6)
+target_position = Vector2(0, -45)
+script = ExtResource("2_m45c3")
+
+[node name="RayCastLeft2" type="RayCast2D" parent="."]
+rotation = -1.94429
+scale = Vector2(6, 6)
+target_position = Vector2(0, 45)
+script = ExtResource("2_m45c3")
+
+[node name="RayCastRearLeft2" type="RayCast2D" parent="."]
+rotation = -1.34564
+scale = Vector2(6, 6)
+target_position = Vector2(30, 30)
+script = ExtResource("2_m45c3")
+
+[node name="RayCastRearRight2" type="RayCast2D" parent="."]
+rotation = 1.34565
+scale = Vector2(6, 6)
+target_position = Vector2(30, -30)
+script = ExtResource("2_m45c3")
+
+[node name="RayCastForeLeft2" type="RayCast2D" parent="."]
+rotation = -2.53073
+scale = Vector2(6, 6)
+target_position = Vector2(-35, 35)
+script = ExtResource("2_m45c3")
+
+[node name="RayCastForeRight2" type="RayCast2D" parent="."]
+rotation = 2.53073
+scale = Vector2(6, 6)
+target_position = Vector2(-35, -35)
+script = ExtResource("2_m45c3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pbpgm")
+animation = &"0"
+script = ExtResource("4_77bwf")
