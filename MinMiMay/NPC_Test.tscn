@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxpvwdmx2hfg"]
+
+[ext_resource type="Script" path="res://new_script.gd" id="1_0fc2j"]
+[ext_resource type="Texture2D" uid="uid://pa2d0w1wc8l1" path="res://Police (16 x 16).png" id="2_s8biq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kyrt"]
+size = Vector2(16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68aes"]
+atlas = ExtResource("2_s8biq")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_smw1l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68aes")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="NPC_Car_2" type="CharacterBody2D" parent="."]
+disable_mode = 2
+motion_mode = 1
+slide_on_ceiling = false
+safe_margin = 48.444
+script = ExtResource("1_0fc2j")
+look_ahead = 20
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC_Car_2"]
+position = Vector2(-1, -4)
+shape = SubResource("RectangleShape2D_3kyrt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NPC_Car_2/CollisionShape2D"]
+texture_filter = 1
+rotation = -1.5708
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_smw1l")

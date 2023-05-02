@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3 uid="uid://dg4lkynjhh5tv"]
+
+[ext_resource type="Texture2D" uid="uid://dr3ootg4tfvll" path="res://track 2.png" id="1_oltpw"]
+[ext_resource type="PackedScene" uid="uid://btarsx1mm7817" path="res://NPC car.tscn" id="2_xov6s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdehe"]
+atlas = ExtResource("1_oltpw")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dhcw"]
+atlas = ExtResource("1_oltpw")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47j65"]
+atlas = ExtResource("1_oltpw")
+region = Rect2(80, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0wog"]
+atlas = ExtResource("1_oltpw")
+region = Rect2(0, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rx4c"]
+atlas = ExtResource("1_oltpw")
+region = Rect2(0, 160, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_giu6k"]
+atlas = ExtResource("1_oltpw")
+region = Rect2(80, 160, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e5mlf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdehe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7dhcw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47j65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0wog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rx4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_giu6k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+scale = Vector2(0.25, 0.25)
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(4, 4)
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Area2D"]
+sprite_frames = SubResource("SpriteFrames_e5mlf")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-29, -40, -40, -40, -40, 40, -29, 40)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(69, 0)
+polygon = PackedVector2Array(-29, -40, -40, -40, -40, 40, -29, 40)
+
+[node name="NPC_Car_2" parent="." instance=ExtResource("2_xov6s")]
+z_index = 1
+position = Vector2(39, -77)
+rotation = -1.5708
+
+[node name="NPC_Car_3" parent="." instance=ExtResource("2_xov6s")]
+z_index = 1
+position = Vector2(-46, -20)
+rotation = -1.5708
+
+[node name="NPC_Car_4" parent="." instance=ExtResource("2_xov6s")]
+z_index = 1
+position = Vector2(38, 45)
+rotation = -1.5708
+
+[node name="NPC_Car_5" parent="." instance=ExtResource("2_xov6s")]
+z_index = 1
+position = Vector2(-45, 109)
+rotation = -1.5708
